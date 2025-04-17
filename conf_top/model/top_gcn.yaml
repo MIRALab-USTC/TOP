@@ -1,0 +1,77 @@
+# @package _group_
+name: TOPGCN
+json: null
+sampler_name: 'TOPDataSimple'
+norm: 'DAD'
+loop: true
+partition: 'metis'
+data_cpu: false
+online_sampling: false
+merge_cluster: true
+use_eval_data: true
+full_graph_inference: false
+params:
+  reddit:
+    architecture:
+      num_layers: 2
+      hidden_channels: 256
+      dropout: 0.5
+      drop_input: false
+      batch_norm: false
+      bn_name: 'BatchNorm1d'
+      residual: false
+    merge_cluster: false
+    accumulation_steps: 1
+    edge_dropout: 0.0
+    partition_config:
+      num_parts: 2
+      batch_size: 1
+    max_steps: 4000000
+    pool_size: 2
+    num_workers: 0
+    lr: 0.01
+    lr_reduce_factor: 0.5
+    lr_schedule_patience: 10000
+    reg_weight_decay: 0.0
+    nonreg_weight_decay: 0.0
+    grad_norm: none
+    epochs: 400
+    runs: 5
+    optimizer_name: 'Adam'
+    compensate_sample_config:
+      random_num: 3
+      rank: 100
+      inb_size: 10000
+
+  arxiv:
+    architecture:
+      num_layers: 3
+      hidden_channels: 256
+      dropout: 0.5
+      drop_input: false
+      batch_norm: true
+      bn_name: 'BatchNorm1d'
+      residual: true
+      linear: false
+    merge_cluster: true
+    accumulation_steps: 1
+    edge_dropout: 0.0
+    partition_config:
+      num_parts: 80
+      batch_size: 40
+    max_steps: 4000000
+    pool_size: 2
+    num_workers: 0
+    lr: 0.01
+    lr_reduce_factor: 0.5
+    lr_schedule_patience: 10000
+    reg_weight_decay: 0
+    nonreg_weight_decay: 0
+    grad_norm: none
+    epochs: 300
+    runs: 5
+    optimizer_name: 'Adam'
+    compensate_sample_config:
+      random_num: 4
+      rank: 100
+      inb_size: 10000

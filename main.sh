@@ -1,0 +1,2 @@
+CUDA_VISIBLE_DEVICES=0 python main_rsvd.py dataset=arxiv  model=top_gcn  model.sampler_name=TOPDataSimple    model.online_sampling=false  model.params.arxiv.compensate_sample_config.random_num=4
+CUDA_VISIBLE_DEVICES=0 python main_rsvd.py dataset=reddit  model=top_gcn  model.sampler_name=TOPDataSimple    model.online_sampling=false  model.params.reddit.compensate_sample_config.random_num=1

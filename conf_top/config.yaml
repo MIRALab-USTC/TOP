@@ -1,0 +1,6 @@
+defaults:
+  - model: pna
+  - dataset: flickr
+log_every: 1
+inference_type: 'gas'
+save_model: null
